@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react'
+import { Phone, Mail, Send, MessageCircle, Instagram, Facebook } from 'lucide-react'
 import { useState } from 'react'
 
 const ContactSection = () => {
@@ -25,26 +25,14 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: 'Teléfono',
-      details: ['+51 987 654 321', '+51 1 234 5678'],
+      details: ['66197170'],
       description: 'Llámanos para más información'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@academiaindigena.com', 'admisiones@academiaindigena.com'],
+      details: ['bellezasindigenas@gmail.com'],
       description: 'Escríbenos cualquier consulta'
-    },
-    {
-      icon: MapPin,
-      title: 'Dirección',
-      details: ['Av. Cultura 123', 'Lima, Perú'],
-      description: 'Visítanos en nuestras instalaciones'
-    },
-    {
-      icon: Clock,
-      title: 'Horarios',
-      details: ['Lunes - Viernes: 8:00 - 18:00', 'Sábados: 9:00 - 14:00'],
-      description: 'Estamos disponibles para atenderte'
     }
   ]
 
@@ -91,7 +79,7 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -111,14 +99,14 @@ const ContactSection = () => {
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <info.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">{info.title}</h4>
                     <p className="text-gray-600 text-sm mb-2">{info.description}</p>
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-primary-600 font-medium">{detail}</p>
+                      <p key={idx} className="text-orange-600 font-medium">{detail}</p>
                     ))}
                   </div>
                 </motion.div>
@@ -130,34 +118,48 @@ const ContactSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="mt-8 p-6 bg-gradient-to-r from-primary-500 to-gold-500 rounded-xl text-white"
+              className="mt-8 p-6 bg-gradient-to-r from-orange-500 to-gold-500 rounded-xl text-white"
             >
               <h4 className="text-xl font-bold mb-4">Síguenos en Redes Sociales</h4>
               <p className="mb-4 opacity-90">
                 Mantente al día con nuestras últimas noticias, eventos y logros de nuestros estudiantes.
               </p>
               <div className="flex space-x-4">
-                <motion.button
+                <motion.a
+                  href="https://www.facebook.com/bellezasindigenaspanama"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+                  className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+                  aria-label="Facebook"
                 >
-                  <span className="text-sm font-bold">f</span>
-                </motion.button>
-                <motion.button
+                  <Facebook className="w-6 h-6" />
+                </motion.a>
+                <motion.a
+                  href="https://www.instagram.com/bellezasindigenaspanama"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+                  className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+                  aria-label="Instagram"
                 >
-                  <span className="text-sm font-bold">ig</span>
-                </motion.button>
-                <motion.button
+                  <Instagram className="w-6 h-6" />
+                </motion.a>
+                <motion.a
+                  href="https://www.tiktok.com/@bellezasindigenaspanama"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+                  className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+                  aria-label="TikTok"
                 >
-                  <span className="text-sm font-bold">yt</span>
-                </motion.button>
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                </motion.a>
               </div>
             </motion.div>
           </motion.div>
@@ -186,7 +188,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                     placeholder="Tu nombre completo"
                   />
                 </div>
@@ -201,7 +203,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -218,8 +220,8 @@ const ContactSection = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
-                    placeholder="+51 987 654 321"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                    placeholder="66197170"
                   />
                 </div>
                 <div>
@@ -231,13 +233,12 @@ const ContactSection = () => {
                     name="interest"
                     value={formData.interest}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                   >
                     <option value="">Selecciona una opción</option>
                     <option value="inscripcion">Inscripción</option>
                     <option value="informacion">Información General</option>
                     <option value="competencias">Competencias</option>
-                    <option value="trabajo">Oportunidades de Trabajo</option>
                     <option value="otro">Otro</option>
                   </select>
                 </div>
@@ -254,7 +255,7 @@ const ContactSection = () => {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Cuéntanos cómo podemos ayudarte..."
                 />
               </div>

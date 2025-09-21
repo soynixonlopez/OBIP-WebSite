@@ -59,7 +59,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl lg:text-2xl text-orange-200 mb-8 max-w-3xl mx-auto leading-relaxed font-light"
+            className="text-lg md:text-xl lg:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed font-light"
           >
             Formamos modelos profesionales que celebran y exponen la belleza 
             de nuestra cultura indígena con elegancia y autenticidad.

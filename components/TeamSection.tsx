@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Instagram, Linkedin, Award, Camera, Users, Star } from 'lucide-react'
+import { Instagram, Linkedin, Award, Camera, Users, Star, Crown, Zap, Target, Heart } from 'lucide-react'
 
 const TeamSection = () => {
   const [ref, inView] = useInView({
@@ -12,48 +12,52 @@ const TeamSection = () => {
 
   const teamMembers = [
     {
-      name: 'María Elena Quispe',
-      role: 'Directora General',
-      description: 'Experta en modelaje con más de 15 años de experiencia y defensora de la cultura indígena.',
-      image: '/api/placeholder/300/400',
+      name: 'Anselmo Urrutia',
+      role: 'Director',
+      shortRole: 'CEO',
+      image: '/images/team/anselmo-urrutia.jpg',
+      color: 'from-orange-500 to-gold-500',
+      specialty: 'Liderazgo & Visión',
       social: {
-        instagram: '@maria_quispe',
-        linkedin: 'maria-quispe'
-      },
-      achievements: ['Ex-Modelo Internacional', 'Fundadora de la Academia', 'Premio a la Diversidad Cultural 2023']
+        instagram: '@anselmo_urrutia',
+        linkedin: 'anselmo-urrutia'
+      }
     },
     {
-      name: 'Carlos Mamani',
-      role: 'Instructor de Pasarela',
-      description: 'Especialista en técnicas de pasarela y expresión corporal con enfoque cultural.',
-      image: '/api/placeholder/300/400',
+      name: 'Yaini Archibold',
+      role: 'Logística',
+      shortRole: 'LOG',
+      image: '/images/team/yaini-archibold.jpg',
+      color: 'from-pink-500 to-rose-500',
+      specialty: 'Organización & Eventos',
       social: {
-        instagram: '@carlos_mamani',
-        linkedin: 'carlos-mamani'
-      },
-      achievements: ['Instructor Certificado', '15+ años experiencia', 'Especialista en Expresión Cultural']
+        instagram: '@yaini_archibold',
+        linkedin: 'yaini-archibold'
+      }
     },
     {
-      name: 'Ana Condori',
-      role: 'Coordinadora de Fotografía',
-      description: 'Fotógrafa profesional especializada en retratos que celebran la diversidad cultural.',
-      image: '/api/placeholder/300/400',
+      name: 'Matilde Kabu',
+      role: 'Protocolos',
+      shortRole: 'PRO',
+      image: '/images/team/matilde-kabu.jpg',
+      color: 'from-green-500 to-emerald-500',
+      specialty: 'Protocolo & Ceremonias',
       social: {
-        instagram: '@ana_condori_photo',
-        linkedin: 'ana-condori'
-      },
-      achievements: ['Fotógrafa Profesional', 'Premio Nacional de Fotografía', 'Especialista en Retratos Culturales']
+        instagram: '@matilde_kabu',
+        linkedin: 'matilde-kabu'
+      }
     },
     {
-      name: 'Roberto Huanca',
-      role: 'Asesor Cultural',
-      description: 'Antropólogo y consultor cultural, asegura el respeto por las tradiciones ancestrales.',
-      image: '/api/placeholder/300/400',
+      name: 'Keytlin Lopez',
+      role: 'Coordinación',
+      shortRole: 'COO',
+      image: '/images/team/keytlin-lopez.jpg',
+      color: 'from-purple-500 to-violet-500',
+      specialty: 'Planificación & Operaciones',
       social: {
-        instagram: '@roberto_huanca',
-        linkedin: 'roberto-huanca'
-      },
-      achievements: ['Antropólogo Cultural', 'Consultor UNESCO', 'Especialista en Tradiciones Indígenas']
+        instagram: '@keytlin_lopez',
+        linkedin: 'keytlin-lopez'
+      }
     }
   ]
 
@@ -69,67 +73,82 @@ const TeamSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Nuestro <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-gold-400 bg-clip-text text-transparent">Equipo</span>
           </h2>
-          <p className="text-xl text-orange-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
             Conoce a los profesionales apasionados que hacen posible nuestra misión 
             de celebrar la belleza ancestral a través del modelaje profesional.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white/10 backdrop-blur-sm border border-orange-500/20 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 card-hover"
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="group relative"
             >
-              {/* Profile Image */}
-              <div className="relative h-80 bg-gradient-to-br from-orange-500/20 to-pink-500/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-pink-500/10 flex items-center justify-center">
-                  <Users className="w-24 h-24 text-orange-400" />
-                </div>
-                {/* Role badge */}
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                  <span className="text-sm font-semibold text-orange-600">{member.role}</span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                <p className="text-orange-200 mb-4 leading-relaxed">{member.description}</p>
-
-                {/* Achievements */}
-                <div className="space-y-2 mb-4">
-                  {member.achievements.map((achievement, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                      <span className="text-sm text-orange-200">{achievement}</span>
+              {/* Main Card */}
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 h-full flex flex-col items-center text-center hover:bg-white/10 transition-all duration-500">
+                {/* Profile Image with gradient border */}
+                <div className={`w-32 h-32 bg-gradient-to-br ${member.color} rounded-3xl p-2 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-2xl"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    {/* Fallback icon if image fails to load */}
+                    <div className="w-full h-full flex items-center justify-center hidden">
+                      <Users className="w-12 h-12 text-white" />
                     </div>
-                  ))}
+                  </div>
                 </div>
+
+                {/* Short Role Badge */}
+                <div className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-3">
+                  <span className="text-xs font-bold text-orange-400 tracking-wider">{member.shortRole}</span>
+                </div>
+
+                {/* Name */}
+                <h3 className="text-xl font-bold text-white mb-3">{member.name}</h3>
+
+                {/* Role */}
+                <p className="text-orange-400 font-semibold text-base mb-3">{member.role}</p>
+
+                {/* Specialty */}
+                <p className="text-white/70 text-sm mb-6 leading-relaxed">{member.specialty}</p>
 
                 {/* Social Links */}
-                <div className="flex space-x-3">
+                <div className="flex space-x-4 mt-auto">
                   <motion.a
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     href={`https://instagram.com/${member.social.instagram.replace('@', '')}`}
-                    className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
+                    className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
                   >
-                    <Instagram className="w-4 h-4" />
+                    <Instagram className="w-5 h-5" />
                   </motion.a>
                   <motion.a
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     href={`https://linkedin.com/in/${member.social.linkedin}`}
-                    className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
+                    className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
                   >
-                    <Linkedin className="w-4 h-4" />
+                    <Linkedin className="w-5 h-5" />
                   </motion.a>
                 </div>
               </div>
+
+              {/* Decorative elements */}
+              <div className={`absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br ${member.color} rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300`}></div>
+              <div className={`absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-br ${member.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
             </motion.div>
           ))}
         </div>

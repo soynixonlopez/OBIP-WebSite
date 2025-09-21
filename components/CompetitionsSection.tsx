@@ -13,32 +13,32 @@ const CompetitionsSection = () => {
   const competitions = [
     {
       id: 1,
-      title: 'Desfile Internacional de Diversidad Cultural',
-      date: '15 de Marzo, 2024',
-      location: 'Lima, Perú',
+      title: 'Baluwala, Historias Indígenas Panameñas',
+      date: 'Viernes 26 de Septiembre',
+      location: 'Teatro Balboa, 7:00 p.m.',
       status: 'próximo',
-      description: 'El evento más importante del año donde nuestros estudiantes compiten con modelos de todo el mundo.',
-      achievements: ['1er Lugar - Sofía Mamani', '2do Lugar - Diego Quispe', 'Mejor Pasarela Cultural'],
+      description: 'Evento cultural que incluye teatro, modelaje, danza ancestral, poesía y canto tradicional.',
+      achievements: ['Teatro', 'Modelaje', 'Danza Ancestral', 'Poesía', 'Canto'],
       image: '/api/placeholder/600/400'
     },
     {
       id: 2,
-      title: 'Concurso Nacional de Modelaje Indígena',
-      date: '20 de Enero, 2024',
-      location: 'Cusco, Perú',
+      title: '2da Festival de Arte Guna',
+      date: '19 de Septiembre',
+      location: 'Universidad de Panamá',
       status: 'completado',
-      description: 'Competencia nacional que celebra la belleza y diversidad de los pueblos indígenas.',
-      achievements: ['1er Lugar - Elena Condori', '2do Lugar - Miguel Huanca', 'Premio Especial a la Tradición'],
+      description: 'Participación en el festival organizado por diferentes organizaciones como AEKI, OCLAE y otras.',
+      achievements: ['Participación Cultural', 'Representación Indígena', 'Arte Tradicional'],
       image: '/api/placeholder/600/400'
     },
     {
       id: 3,
-      title: 'Festival de Moda Ancestral',
-      date: '10 de Diciembre, 2023',
-      location: 'Arequipa, Perú',
+      title: 'La Gala Folklórica Etnias de Panamá',
+      date: '31 de Agosto',
+      location: 'Teatro Balboa',
       status: 'completado',
-      description: 'Evento que combina moda contemporánea con elementos tradicionales indígenas.',
-      achievements: ['Mejor Diseño Cultural', 'Modelo Revelación - Carmen Flores', 'Premio del Público'],
+      description: 'Gala que celebra la diversidad étnica y cultural de Panamá con representación artística.',
+      achievements: ['Representación Cultural', 'Modelaje Tradicional', 'Folklore Panameño'],
       image: '/api/placeholder/600/400'
     }
   ]
@@ -46,27 +46,27 @@ const CompetitionsSection = () => {
   const achievements = [
     {
       icon: Trophy,
-      title: 'Premios Internacionales',
-      count: '25+',
-      description: 'Reconocimientos en competencias de modelaje a nivel mundial'
+      title: 'Premios',
+      count: '5',
+      description: 'Reconocimientos obtenidos en competencias de modelaje'
     },
     {
       icon: Users,
-      title: 'Estudiantes Premiados',
-      count: '80+',
-      description: 'Nuestros estudiantes han ganado premios en diversas competencias'
+      title: 'Estudiantes',
+      count: '15',
+      description: 'Modelos profesionales formados en nuestra academia'
     },
     {
       icon: Star,
       title: 'Calificación Promedio',
-      count: '9.2/10',
-      description: 'Evaluación promedio de nuestros estudiantes en competencias'
+      count: '9.8/10',
+      description: 'Excelencia académica y profesional de nuestros estudiantes'
     },
     {
       icon: Award,
-      title: 'Reconocimientos Culturales',
-      count: '15+',
-      description: 'Premios especiales por promover la diversidad cultural'
+      title: 'Eventos Participados',
+      count: '30',
+      description: 'Competencias y desfiles en los que hemos participado'
     }
   ]
 
@@ -82,7 +82,7 @@ const CompetitionsSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Competencias y <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-gold-400 bg-clip-text text-transparent">Logros</span>
           </h2>
-          <p className="text-xl text-orange-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
             Nuestros estudiantes participan en las competencias más prestigiosas 
             del modelaje, llevando consigo el orgullo de su herencia cultural.
           </p>
@@ -101,14 +101,14 @@ const CompetitionsSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-              className="text-center p-6 bg-gradient-to-br from-primary-50 to-gold-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-hover"
+              className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-hover border border-white/20"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-gold-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <achievement.icon className="w-8 h-8 text-white" />
               </div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">{achievement.count}</div>
-              <h4 className="text-lg font-semibold text-white mb-2">{achievement.title}</h4>
-              <p className="text-orange-200 text-sm leading-relaxed">{achievement.description}</p>
+              <div className="text-3xl font-bold text-orange-400 mb-2">{achievement.count}</div>
+              <h4 className="text-lg font-semibold text-orange-400 mb-2">{achievement.title}</h4>
+              <p className="text-white text-sm leading-relaxed">{achievement.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -127,9 +127,9 @@ const CompetitionsSection = () => {
             >
               {/* Competition Image */}
               <div className="lg:w-1/2">
-                <div className="aspect-[3/2] bg-gradient-to-br from-primary-100 to-gold-100 rounded-2xl shadow-xl overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary-200 to-gold-200 flex items-center justify-center">
-                    <Trophy className="w-24 h-24 text-primary-500" />
+                <div className="aspect-[3/2] bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20">
+                  <div className="w-full h-full bg-gradient-to-br from-orange-500/20 to-gold-500/20 flex items-center justify-center">
+                    <Trophy className="w-24 h-24 text-orange-400" />
                   </div>
                 </div>
               </div>
@@ -140,30 +140,30 @@ const CompetitionsSection = () => {
                   <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
                     competition.status === 'próximo' 
                       ? 'bg-green-100 text-green-600' 
-                      : 'bg-orange-500/20 text-orange-200'
+                      : 'bg-white/20 text-white'
                   }`}>
                     {competition.status === 'próximo' ? 'Próximo' : 'Completado'}
                   </span>
-                  <div className="flex items-center space-x-1 text-orange-300">
+                  <div className="flex items-center space-x-1 text-white">
                     <Calendar className="w-4 h-4" />
                     <span className="text-sm">{competition.date}</span>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-4">{competition.title}</h3>
-                <p className="text-orange-200 mb-4 leading-relaxed">{competition.description}</p>
+                <h3 className="text-2xl font-bold text-orange-400 mb-4">{competition.title}</h3>
+                <p className="text-white mb-4 leading-relaxed">{competition.description}</p>
 
-                <div className="flex items-center space-x-1 text-orange-300 mb-6">
+                <div className="flex items-center space-x-1 text-white mb-6">
                   <MapPin className="w-4 h-4" />
                   <span className="text-sm">{competition.location}</span>
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="font-semibold text-white">Logros Obtenidos:</h4>
+                  <h4 className="font-semibold text-orange-400">Participaciones con:</h4>
                   {competition.achievements.map((achievement, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <Award className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                      <span className="text-sm text-orange-200">{achievement}</span>
+                      <span className="text-sm text-white">{achievement}</span>
                     </div>
                   ))}
                 </div>

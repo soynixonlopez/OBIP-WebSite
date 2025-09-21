@@ -1,15 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap'
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
@@ -32,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${inter.className} ${playfair.variable}`}>
+      <body className={inter.className}>
         <Header />
         <main className="min-h-screen">
           {children}
