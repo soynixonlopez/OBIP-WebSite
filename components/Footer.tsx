@@ -45,17 +45,19 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-1"
           >
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-gold-500 rounded-full flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">Academia Indígena</span>
+            <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
+              <img 
+                src="https://res.cloudinary.com/dewe5s4xv/image/upload/v1758517081/Logo.png"
+                alt="OBIP - Bellezas Indígenas de Panamá"
+                className="w-12 h-12 object-contain"
+              />
+              <span className="text-xl font-bold text-white">OBIP</span>
             </div>
-            <p className="text-white mb-6 leading-relaxed">
+            <p className="text-white mb-6 leading-relaxed text-center md:text-left">
               Celebrando la belleza ancestral a través del modelaje profesional, 
               promoviendo la diversidad cultural y el orgullo por nuestras raíces.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex justify-center md:justify-start space-x-4">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
@@ -85,8 +87,8 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-lg font-semibold mb-4 text-orange-400">Academia</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-semibold mb-4 text-orange-400 text-center md:text-left">Academia</h3>
+            <ul className="space-y-3 text-center md:text-left">
               {footerLinks.academy.map((link) => (
                 <li key={link.name}>
                   <motion.a
@@ -107,8 +109,8 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-lg font-semibold mb-4 text-orange-400">Estudiantes</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-semibold mb-4 text-orange-400 text-center md:text-left">Estudiantes</h3>
+            <ul className="space-y-3 text-center md:text-left">
               {footerLinks.students.map((link) => (
                 <li key={link.name}>
                   <motion.a
@@ -129,17 +131,17 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="text-lg font-semibold mb-4 text-orange-400">Contacto</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
+            <h3 className="text-lg font-semibold mb-4 text-orange-400 text-center md:text-left">Contacto</h3>
+            <div className="space-y-3 text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start space-x-3">
                 <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
                 <span className="text-white">66197170</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-center md:justify-start space-x-3">
                 <Mail className="w-4 h-4 text-orange-400 flex-shrink-0" />
                 <span className="text-white">bellezasindigenas@gmail.com</span>
               </div>
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start justify-center md:justify-start space-x-3">
                 <MapPin className="w-4 h-4 text-orange-400 flex-shrink-0 mt-1" />
                 <span className="text-white">
                   Panamá City<br />
@@ -187,14 +189,30 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="border-t border-white/20 pt-8"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-white">
-              <span>© {currentYear} Bellezas Indígenas de Panamá |</span>
-              <span>Todos los derechos reservados.</span>
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center">
+            {/* Copyright */}
+            <div className="text-white">
+              <p className="block md:hidden">© {currentYear} Bellezas Indígenas de Panamá</p>
+              <p className="block md:hidden">Todos los derechos reservados.</p>
+              <p className="hidden md:block">© {currentYear} Bellezas Indígenas de Panamá | Todos los derechos reservados.</p>
             </div>
+            
+            {/* Privacy Policy Link */}
+            <div className="text-white">
+              <a 
+                href="/politicas-privacidad"
+                className="text-orange-400 hover:text-orange-300 transition-colors duration-300 underline"
+              >
+                Políticas de Privacidad
+              </a>
+            </div>
+            
+            {/* Developer Credit */}
             <div className="flex items-center space-x-1 text-white">
               <span>Sitio Web desarrollado por</span>
-              <a href="http://nixonlopez.com"><span className='text-orange-400'>NixonDev</span></a>
+              <a href="http://nixonlopez.com" className="text-orange-400 hover:text-orange-300 transition-colors duration-300">
+                NixonDev
+              </a>
             </div>
           </div>
         </motion.div>

@@ -17,12 +17,13 @@ const Header = () => {
   }, [])
 
   const navItems = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'Academia', href: '#academia' },
-    { name: 'Equipo', href: '#equipo' },
-    { name: 'Estudiantes', href: '#estudiantes' },
-    { name: 'Competencias', href: '#competencias' },
-    { name: 'Contacto', href: '#contacto' },
+    { name: 'Inicio', href: '/#inicio' },
+    { name: 'Academia', href: '/#academia' },
+    { name: 'Equipo', href: '/#equipo' },
+    { name: 'Estudiantes', href: '/#estudiantes' },
+    { name: 'Competencias', href: '/#competencias' },
+    { name: 'Patrocinadores', href: '/#patrocinadores' },
+    { name: 'Contacto', href: '/#contacto' },
   ]
 
   return (
@@ -40,13 +41,15 @@ const Header = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-3"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-gold-500 rounded-full flex items-center justify-center">
-              <Users className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-lg font-bold text-gradient">
-              Academia Indígena
+            <img 
+              src="https://res.cloudinary.com/dewe5s4xv/image/upload/v1758517081/Logo.png"
+              alt="OBIP - Bellezas Indígenas de Panamá"
+              className="w-10 h-10 object-contain"
+            />
+            <span className="text-lg font-bold text-white">
+              OBIP
             </span>
           </motion.div>
 

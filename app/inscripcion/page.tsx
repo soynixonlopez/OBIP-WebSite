@@ -91,7 +91,7 @@ const InscripcionPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center pt-12"
           >
             <Link 
               href="/" 
@@ -112,7 +112,7 @@ const InscripcionPage = () => {
         </div>
       </div>
 
-      <div className="container-custom py-16">
+      <div className="container-custom pt-20 pb-16">
         {/* Categorías */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

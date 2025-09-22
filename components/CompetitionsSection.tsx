@@ -199,13 +199,14 @@ const CompetitionsSection = () => {
               Únete a nuestra academia y prepárate para participar en las competencias 
               más prestigiosas del modelaje, representando con orgullo tu herencia cultural.
             </p>
-            <motion.button
+            <motion.a
+              href="/inscripcion"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-primary-500 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-white text-primary-500 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl inline-block"
             >
               Comenzar Ahora
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       </div>

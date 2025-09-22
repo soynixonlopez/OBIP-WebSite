@@ -53,13 +53,13 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 leading-tight drop-shadow-2xl"
+            className="text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-6 leading-tight drop-shadow-2xl"
           >
-            <span className="block text-4xl md:text-5xl lg:text-6xl text-orange-300 font-light mb-2 drop-shadow-lg">Academia de</span>
+            <span className="block text-5xl md:text-5xl lg:text-6xl text-orange-300 font-light mb-2 drop-shadow-lg">Academia de</span>
             <span className="block bg-gradient-to-r from-orange-400 via-pink-400 to-gold-400 bg-clip-text text-transparent drop-shadow-lg">
               Modelaje
             </span>
-            <span className="block text-5xl md:text-6xl lg:text-7xl text-orange-300 font-light drop-shadow-lg">
+            <span className="block text-6xl md:text-6xl lg:text-7xl text-orange-300 font-light drop-shadow-lg">
               Indígena
             </span>
           </motion.h1>
@@ -97,13 +97,14 @@ const Hero = () => {
                 →
               </motion.div>
             </motion.a>
-            <motion.button
+            <motion.a
+              href="#estudiantes"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="group bg-white/10 border-2 border-white/40 text-white hover:bg-white/20 hover:border-white/60 font-semibold py-4 px-8 rounded-2xl transition-all duration-300 backdrop-blur-md text-base shadow-xl"
             >
               Ver Nuestros Modelos
-            </motion.button>
+            </motion.a>
           </motion.div>
 
         </motion.div>

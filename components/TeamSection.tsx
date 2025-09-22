@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Instagram, Linkedin, Award, Camera, Users, Star, Crown, Zap, Target, Heart, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const TeamSection = () => {
   const [ref, inView] = useInView({
@@ -81,8 +81,20 @@ const TeamSection = () => {
   ]
 
   const [currentPage, setCurrentPage] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
   const itemsPerPage = 3
   const totalPages = Math.ceil(teamMembers.length / itemsPerPage)
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+    
+    return () => window.removeEventListener('resize', checkIsMobile)
+  }, [])
 
   const nextPage = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages)
@@ -117,24 +129,25 @@ const TeamSection = () => {
 
         {/* Carousel Container */}
         <div className="relative">
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Hidden on mobile */}
           <button
             onClick={prevPage}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button
             onClick={nextPage}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
           {/* Team Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-8">
-            {getCurrentPageMembers().map((member, index) => (
+            {/* Mobile: Show all members, Desktop: Show current page members */}
+            {(isMobile ? teamMembers : getCurrentPageMembers()).map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -202,8 +215,8 @@ const TeamSection = () => {
             ))}
           </div>
 
-          {/* Page Indicators */}
-          <div className="flex justify-center space-x-2 mt-8">
+          {/* Page Indicators - Hidden on mobile */}
+          <div className="hidden md:flex justify-center space-x-2 mt-8">
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}

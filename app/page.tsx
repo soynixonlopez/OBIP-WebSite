@@ -3,6 +3,7 @@ import AboutSection from '@/components/AboutSection'
 import TeamSection from '@/components/TeamSection'
 import StudentsGallery from '@/components/StudentsGallery'
 import CompetitionsSection from '@/components/CompetitionsSection'
+import SponsorsSection from '@/components/SponsorsSection'
 import ContactSection from '@/components/ContactSection'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <TeamSection />
       <StudentsGallery />
       <CompetitionsSection />
+      <SponsorsSection />
       <ContactSection />
     </div>
   )

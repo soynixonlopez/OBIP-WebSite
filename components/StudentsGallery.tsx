@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Camera, Star, Award, Users, ChevronLeft, ChevronRight, Baby, User, Crown, UserCheck } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const StudentsGallery = () => {
   const [ref, inView] = useInView({
@@ -13,127 +13,142 @@ const StudentsGallery = () => {
 
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [currentPage, setCurrentPage] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+    
+    return () => window.removeEventListener('resize', checkIsMobile)
+  }, [])
 
   const categories = [
     { id: 'all', name: 'Todos', icon: Users },
-    { id: 'mini', name: 'Mini', icon: Baby },
-    { id: 'teen', name: 'Teen', icon: User },
-    { id: 'miss', name: 'Miss', icon: Crown },
-    { id: 'mrs', name: 'Mrs', icon: UserCheck }
+    { id: 'mrs', name: 'Mr. Indígena', icon: UserCheck },
+    { id: 'miss', name: 'Miss Indígena', icon: Crown },
+    { id: 'teen', name: 'Teen Indígena', icon: User }
   ]
 
   const students = [
-    // Mini Models (7-11 años)
+    // Ganadores 2024 (aparecen primero en "Todos")
     {
       id: 1,
-      name: 'Luna Archibold',
-      category: 'mini',
-      age: 9,
+      name: 'Joel Robinson',
+      category: 'mrs',
       image: '/api/placeholder/400/500',
-      achievement: 'Mini Modelo del Año 2023',
-      description: 'Pequeña gran estrella con carisma natural y elegancia innata.'
+      achievement: 'Mr. Indígena Panamá 2024',
+      description: 'Ganador del título Mr. Indígena Panamá 2024, representando la elegancia y cultura ancestral.'
     },
     {
       id: 2,
-      name: 'Kai Urrutia',
-      category: 'mini',
-      age: 8,
+      name: 'Cristel Jiménez',
+      category: 'miss',
       image: '/api/placeholder/400/500',
-      achievement: 'Mejor Pasarela Infantil',
-      description: 'Modelo infantil con gran potencial y personalidad única.'
+      achievement: 'Miss Indígena Panamá 2024',
+      description: 'Ganadora del título Miss Indígena Panamá 2024, embajadora de la belleza indígena.'
     },
     {
       id: 3,
-      name: 'Maya Kabu',
-      category: 'mini',
-      age: 10,
+      name: 'Yoany García',
+      category: 'teen',
       image: '/api/placeholder/400/500',
-      achievement: 'Premio a la Sonrisa',
-      description: 'Encantadora modelo que ilumina cada sesión fotográfica.'
+      achievement: 'Reina Teen Indígena de Panamá 2024',
+      description: 'Ganadora del título Teen Indígena de Panamá 2024, joven promesa del modelaje.'
     },
-    // Teen Models (12-17 años)
+    // Participantes Mr. Indígena 2025
     {
       id: 4,
-      name: 'Sofia Mamani',
-      category: 'teen',
-      age: 16,
+      name: 'Rainel Díaz',
+      category: 'mrs',
       image: '/api/placeholder/400/500',
-      achievement: 'Ganadora Desfile Internacional 2023',
-      description: 'Estudiante destacada en técnicas de pasarela con enfoque cultural.'
+      achievement: 'Participante Mr. Indígena 2025',
+      description: 'Participante en el concurso Mr. Indígena 2025, destacado por su presencia y carisma.'
     },
     {
       id: 5,
-      name: 'Diego Quispe',
-      category: 'teen',
-      age: 15,
+      name: 'Alexis Abrego',
+      category: 'mrs',
       image: '/api/placeholder/400/500',
-      achievement: 'Portada Revista Cultural',
-      description: 'Especialista en fotografía de moda con identidad indígena.'
+      achievement: 'Participante Mr. Indígena 2025',
+      description: 'Participante en el concurso Mr. Indígena 2025, modelo con gran potencial.'
     },
     {
       id: 6,
-      name: 'Elena Condori',
-      category: 'teen',
-      age: 17,
+      name: 'Gilberto Carpintero',
+      category: 'mrs',
       image: '/api/placeholder/400/500',
-      achievement: 'Premio a la Diversidad Cultural',
-      description: 'Modelo reconocida por promover la belleza ancestral.'
+      achievement: 'Participante Mr. Indígena 2025',
+      description: 'Participante en el concurso Mr. Indígena 2025, representando la cultura ancestral.'
     },
-    // Miss Models (18-28 años mujeres)
+    {
+      id: 13,
+      name: 'Nixon Lopez',
+      category: 'mrs',
+      image: '/api/placeholder/400/500',
+      achievement: 'Participante Mr. Indígena 2025',
+      description: 'Participante en el concurso Mr. Indígena 2025, modelo con gran proyección.'
+    },
+    {
+      id: 14,
+      name: 'Roy Quintero',
+      category: 'mrs',
+      image: '/api/placeholder/400/500',
+      achievement: 'Participante Mr. Indígena 2025',
+      description: 'Participante en el concurso Mr. Indígena 2025, destacado por su elegancia.'
+    },
+    // Participantes Miss Indígena 2025
     {
       id: 7,
-      name: 'Carmen Flores',
+      name: 'Maylca Lorys Morales',
       category: 'miss',
-      age: 22,
       image: '/api/placeholder/400/500',
-      achievement: 'Campaña Nacional de Moda',
-      description: 'Modelo profesional especializada en alta costura.'
+      achievement: 'Participante Miss Indígena 2025',
+      description: 'Participante en el concurso Miss Indígena 2025, modelo con elegancia natural.'
     },
+    // Participantes Miss Teen Indígena 2025
     {
       id: 8,
-      name: 'Isabella Lopez',
-      category: 'miss',
-      age: 25,
+      name: 'Brihana Rodríguez',
+      category: 'teen',
       image: '/api/placeholder/400/500',
-      achievement: 'Miss Panamá Indígena 2023',
-      description: 'Embajadora de la belleza y cultura indígena panameña.'
+      achievement: 'Participante Miss Teen Indígena 2025',
+      description: 'Participante en el concurso Miss Teen Indígena 2025, joven con gran talento.'
     },
     {
       id: 9,
-      name: 'Valentina Archibold',
-      category: 'miss',
-      age: 20,
+      name: 'Michelle Valdez',
+      category: 'teen',
       image: '/api/placeholder/400/500',
-      achievement: 'Mejor Modelo Emergente',
-      description: 'Joven promesa del modelaje con gran proyección internacional.'
+      achievement: 'Participante Miss Teen Indígena 2025',
+      description: 'Participante en el concurso Miss Teen Indígena 2025, modelo emergente.'
     },
-    // Mrs Models (18-28 años hombres)
     {
       id: 10,
-      name: 'Miguel Huanca',
-      category: 'mrs',
-      age: 24,
+      name: 'Jetzabel Tejada',
+      category: 'teen',
       image: '/api/placeholder/400/500',
-      achievement: 'Desfile de Alta Costura',
-      description: 'Especialista en modelaje masculino con raíces culturales.'
+      achievement: 'Participante Miss Teen Indígena 2025',
+      description: 'Participante en el concurso Miss Teen Indígena 2025, destacada por su carisma.'
     },
     {
       id: 11,
-      name: 'Roberto Mamani',
-      category: 'mrs',
-      age: 26,
+      name: 'Angeli Galindo',
+      category: 'teen',
       image: '/api/placeholder/400/500',
-      achievement: 'Modelo del Año 2023',
-      description: 'Reconocido por su trabajo en diversidad cultural.'
+      achievement: 'Participante Miss Teen Indígena 2025',
+      description: 'Participante en el concurso Miss Teen Indígena 2025, modelo con gran potencial.'
     },
     {
       id: 12,
-      name: 'Carlos Urrutia',
-      category: 'mrs',
-      age: 23,
+      name: 'Yojaidi Morales',
+      category: 'teen',
       image: '/api/placeholder/400/500',
-      achievement: 'Mejor Modelo Masculino',
-      description: 'Modelo profesional con gran presencia y elegancia.'
+      achievement: 'Participante Miss Teen Indígena 2025',
+      description: 'Participante en el concurso Miss Teen Indígena 2025, joven promesa del modelaje.'
     }
   ]
 
@@ -210,14 +225,14 @@ const StudentsGallery = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="relative"
         >
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Hidden on mobile */}
           {totalPages > 1 && (
             <>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={prevPage}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary-500 hover:bg-primary-50 transition-all duration-300"
+                className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary-500 hover:bg-primary-50 transition-all duration-300"
               >
                 <ChevronLeft className="w-6 h-6" />
               </motion.button>
@@ -226,7 +241,7 @@ const StudentsGallery = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={nextPage}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary-500 hover:bg-primary-50 transition-all duration-300"
+                className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary-500 hover:bg-primary-50 transition-all duration-300"
               >
                 <ChevronRight className="w-6 h-6" />
               </motion.button>
@@ -235,7 +250,8 @@ const StudentsGallery = () => {
 
           {/* Students Grid - 3 per row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
-            {currentStudents.map((student, index) => (
+            {/* Mobile: Show all filtered students, Desktop: Show current page students */}
+            {(isMobile ? filteredStudents : currentStudents).map((student, index) => (
               <motion.div
                 key={student.id}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -249,12 +265,8 @@ const StudentsGallery = () => {
                     <Users className="w-24 h-24 text-orange-500" />
                   </div>
                   {/* Achievement badge */}
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                     <span className="text-sm font-semibold text-orange-600">{student.achievement}</span>
-                  </div>
-                  {/* Age badge */}
-                  <div className="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full">
-                    <span className="text-sm font-semibold">{student.age} años</span>
                   </div>
                 </div>
 
@@ -280,9 +292,9 @@ const StudentsGallery = () => {
             ))}
           </div>
 
-          {/* Pagination Dots */}
+          {/* Pagination Dots - Hidden on mobile */}
           {totalPages > 1 && (
-            <div className="flex justify-center mt-8 space-x-2">
+            <div className="hidden md:flex justify-center mt-8 space-x-2">
               {Array.from({ length: totalPages }).map((_, index) => (
                 <button
                   key={index}
@@ -307,20 +319,20 @@ const StudentsGallery = () => {
         >
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold mb-2">15</div>
+              <div className="text-4xl font-bold mb-2">14</div>
               <div className="text-orange-100">Estudiantes Activos</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">98%</div>
+              <div className="text-4xl font-bold mb-2">100%</div>
               <div className="text-orange-100">Tasa de Éxito</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">5</div>
-              <div className="text-orange-100">Premios Obtenidos</div>
+              <div className="text-4xl font-bold mb-2">3</div>
+              <div className="text-orange-100">Títulos 2024</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">30</div>
-              <div className="text-orange-100">Eventos Participados</div>
+              <div className="text-4xl font-bold mb-2">11</div>
+              <div className="text-orange-100">Participantes 2025</div>
             </div>
           </div>
         </motion.div>
