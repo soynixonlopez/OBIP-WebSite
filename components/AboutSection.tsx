@@ -82,20 +82,19 @@ const AboutSection = () => {
             </motion.button>
           </motion.div>
 
-          {/* Image placeholder */}
+          {/* Team Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="aspect-[4/3] bg-gradient-to-br from-orange-100 to-pink-100 rounded-2xl shadow-2xl overflow-hidden border border-orange-200">
-              <div className="w-full h-full bg-gradient-to-br from-orange-50 to-pink-50 flex items-center justify-center">
-                <div className="text-center">
-                  <Users className="w-24 h-24 text-orange-500 mx-auto mb-4" />
-                  <p className="text-orange-600 font-semibold">Imagen de la Academia</p>
-                </div>
-              </div>
+            <div className="aspect-[4/3] rounded-2xl shadow-2xl overflow-hidden border border-orange-200">
+              <img 
+                src="https://res.cloudinary.com/dewe5s4xv/image/upload/v1758512426/teamobip.jpg"
+                alt="Equipo de Bellezas Indígenas de Panamá"
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-orange-500/20 rounded-full"></div>

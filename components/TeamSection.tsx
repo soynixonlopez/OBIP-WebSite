@@ -161,10 +161,10 @@ const TeamSection = () => {
           className="text-center mt-16"
         >
           <div className="bg-white/10 backdrop-blur-sm border border-orange-500/20 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-orange-400 mb-4">
               ¿Quieres formar parte de nuestro equipo?
             </h3>
-            <p className="text-orange-200 mb-6 max-w-2xl mx-auto">
+            <p className="text-white mb-6 max-w-2xl mx-auto">
               Estamos siempre buscando profesionales apasionados por la cultura 
               indígena y el modelaje. Únete a nuestra misión de celebrar la diversidad.
             </p>
