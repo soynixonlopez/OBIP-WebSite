@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Instagram, Linkedin, Award, Camera, Users, Star, Crown, Zap, Target, Heart } from 'lucide-react'
+import { Instagram, Linkedin, Award, Camera, Users, Star, Crown, Zap, Target, Heart, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState } from 'react'
 
 const TeamSection = () => {
   const [ref, inView] = useInView({
@@ -14,7 +15,6 @@ const TeamSection = () => {
     {
       name: 'Anselmo Urrutia',
       role: 'Director',
-      shortRole: 'CEO',
       image: '/images/team/anselmo-urrutia.jpg',
       color: 'from-orange-500 to-gold-500',
       specialty: 'Liderazgo & Visión',
@@ -26,7 +26,6 @@ const TeamSection = () => {
     {
       name: 'Yaini Archibold',
       role: 'Logística',
-      shortRole: 'LOG',
       image: '/images/team/yaini-archibold.jpg',
       color: 'from-pink-500 to-rose-500',
       specialty: 'Organización & Eventos',
@@ -38,7 +37,6 @@ const TeamSection = () => {
     {
       name: 'Matilde Kabu',
       role: 'Protocolos',
-      shortRole: 'PRO',
       image: '/images/team/matilde-kabu.jpg',
       color: 'from-green-500 to-emerald-500',
       specialty: 'Protocolo & Ceremonias',
@@ -50,7 +48,6 @@ const TeamSection = () => {
     {
       name: 'Keytlin Lopez',
       role: 'Coordinación',
-      shortRole: 'COO',
       image: '/images/team/keytlin-lopez.jpg',
       color: 'from-purple-500 to-violet-500',
       specialty: 'Planificación & Operaciones',
@@ -58,8 +55,47 @@ const TeamSection = () => {
         instagram: '@keytlin_lopez',
         linkedin: 'keytlin-lopez'
       }
+    },
+    {
+      name: 'Keyla Barigon',
+      role: 'Asuntos Ambientales',
+      image: '/images/team/keyla-barigon.jpg',
+      color: 'from-teal-500 to-cyan-500',
+      specialty: 'Sostenibilidad & Ecología',
+      social: {
+        instagram: '@keyla_barigon',
+        linkedin: 'keyla-barigon'
+      }
+    },
+    {
+      name: 'Endric Gonzales',
+      role: 'Especialista',
+      image: '/images/team/endric-gonzales.jpg',
+      color: 'from-indigo-500 to-blue-500',
+      specialty: 'Desarrollo & Innovación',
+      social: {
+        instagram: '@endric_gonzales',
+        linkedin: 'endric-gonzales'
+      }
     }
   ]
+
+  const [currentPage, setCurrentPage] = useState(0)
+  const itemsPerPage = 3
+  const totalPages = Math.ceil(teamMembers.length / itemsPerPage)
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages)
+  }
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages)
+  }
+
+  const getCurrentPageMembers = () => {
+    const startIndex = currentPage * itemsPerPage
+    return teamMembers.slice(startIndex, startIndex + itemsPerPage)
+  }
 
   return (
     <section id="equipo" ref={ref} className="section-padding bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 relative overflow-hidden">
@@ -79,78 +115,107 @@ const TeamSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {teamMembers.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative"
-            >
-              {/* Main Card */}
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 h-full flex flex-col items-center text-center hover:bg-white/10 transition-all duration-500">
-                {/* Profile Image with gradient border */}
-                <div className={`w-32 h-32 bg-gradient-to-br ${member.color} rounded-3xl p-2 mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-full h-full object-cover rounded-2xl"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    {/* Fallback icon if image fails to load */}
-                    <div className="w-full h-full flex items-center justify-center hidden">
-                      <Users className="w-12 h-12 text-white" />
+        {/* Carousel Container */}
+        <div className="relative">
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevPage}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <button
+            onClick={nextPage}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Team Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-8">
+            {getCurrentPageMembers().map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group relative"
+              >
+                {/* Main Card */}
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 h-full flex flex-col items-center text-center hover:bg-white/10 transition-all duration-500">
+                  {/* Profile Image with gradient border */}
+                  <div className={`w-32 h-32 bg-gradient-to-br ${member.color} rounded-3xl p-2 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        className="w-full h-full object-cover rounded-2xl"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                      {/* Fallback icon if image fails to load */}
+                      <div className="w-full h-full flex items-center justify-center hidden">
+                        <Users className="w-12 h-12 text-white" />
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Name */}
+                  <h3 className="text-xl font-bold text-white mb-3">{member.name}</h3>
+
+                  {/* Role */}
+                  <p className="text-orange-400 font-semibold text-base mb-3">{member.role}</p>
+
+                  {/* Specialty */}
+                  <p className="text-white/70 text-sm mb-6 leading-relaxed">{member.specialty}</p>
+
+                  {/* Social Links */}
+                  <div className="flex space-x-4 mt-auto">
+                    <motion.a
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
+                      href={`https://instagram.com/${member.social.instagram.replace('@', '')}`}
+                      className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
+                    >
+                      <Instagram className="w-5 h-5" />
+                    </motion.a>
+                    <motion.a
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
+                      href={`https://linkedin.com/in/${member.social.linkedin}`}
+                      className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </motion.a>
                   </div>
                 </div>
 
-                {/* Short Role Badge */}
-                <div className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full mb-3">
-                  <span className="text-xs font-bold text-orange-400 tracking-wider">{member.shortRole}</span>
-                </div>
+                {/* Decorative elements */}
+                <div className={`absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br ${member.color} rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300`}></div>
+                <div className={`absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-br ${member.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
+              </motion.div>
+            ))}
+          </div>
 
-                {/* Name */}
-                <h3 className="text-xl font-bold text-white mb-3">{member.name}</h3>
-
-                {/* Role */}
-                <p className="text-orange-400 font-semibold text-base mb-3">{member.role}</p>
-
-                {/* Specialty */}
-                <p className="text-white/70 text-sm mb-6 leading-relaxed">{member.specialty}</p>
-
-                {/* Social Links */}
-                <div className="flex space-x-4 mt-auto">
-                  <motion.a
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    href={`https://instagram.com/${member.social.instagram.replace('@', '')}`}
-                    className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
-                  >
-                    <Instagram className="w-5 h-5" />
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    href={`https://linkedin.com/in/${member.social.linkedin}`}
-                    className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all duration-300"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </motion.a>
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className={`absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br ${member.color} rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300`}></div>
-              <div className={`absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-br ${member.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
-            </motion.div>
-          ))}
+          {/* Page Indicators */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentPage 
+                    ? 'bg-orange-400 scale-125' 
+                    : 'bg-white/30 hover:bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Call to action */}

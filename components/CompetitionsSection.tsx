@@ -19,7 +19,7 @@ const CompetitionsSection = () => {
       status: 'próximo',
       description: 'Evento cultural que incluye teatro, modelaje, danza ancestral, poesía y canto tradicional.',
       achievements: ['Teatro', 'Modelaje', 'Danza Ancestral', 'Poesía', 'Canto'],
-      image: '/api/placeholder/600/400'
+      image: 'https://res.cloudinary.com/dewe5s4xv/image/upload/v1758513501/baluwala.jpg'
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ const CompetitionsSection = () => {
       status: 'completado',
       description: 'Participación en el festival organizado por diferentes organizaciones como AEKI, OCLAE y otras.',
       achievements: ['Participación Cultural', 'Representación Indígena', 'Arte Tradicional'],
-      image: '/api/placeholder/600/400'
+      image: 'https://res.cloudinary.com/dewe5s4xv/image/upload/v1758512423/evento2.jpg'
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ const CompetitionsSection = () => {
       status: 'completado',
       description: 'Gala que celebra la diversidad étnica y cultural de Panamá con representación artística.',
       achievements: ['Representación Cultural', 'Modelaje Tradicional', 'Folklore Panameño'],
-      image: '/api/placeholder/600/400'
+      image: 'https://res.cloudinary.com/dewe5s4xv/image/upload/v1758512423/evento%203.jpg'
     }
   ]
 
@@ -128,9 +128,11 @@ const CompetitionsSection = () => {
               {/* Competition Image */}
               <div className="lg:w-1/2">
                 <div className="aspect-[3/2] bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20">
-                  <div className="w-full h-full bg-gradient-to-br from-orange-500/20 to-gold-500/20 flex items-center justify-center">
-                    <Trophy className="w-24 h-24 text-orange-400" />
-                  </div>
+                  <img 
+                    src={competition.image}
+                    alt={competition.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
 
