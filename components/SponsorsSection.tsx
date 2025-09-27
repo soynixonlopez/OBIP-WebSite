@@ -16,7 +16,7 @@ const SponsorsSection = () => {
       name: 'UvaCafe',
       handle: '@uva_cafeelcangrejo',
       instagram: 'https://www.instagram.com/uva_cafeelcangrejo',
-      logo: 'https://via.placeholder.com/120x120/8B4513/FFFFFF?text=UVA',
+      logo: 'https://res.cloudinary.com/dewe5s4xv/image/upload/v1758948314/uvacafe_dskqtr.png',
       category: 'Gastronomía'
     },
     {
@@ -24,7 +24,7 @@ const SponsorsSection = () => {
       name: 'Gom Photography',
       handle: '@gom.photography',
       instagram: 'https://www.instagram.com/gom.photography',
-      logo: 'https://via.placeholder.com/120x120/4B0082/FFFFFF?text=GOM',
+      logo: 'https://res.cloudinary.com/dewe5s4xv/image/upload/v1758948314/gom_w8dan2.png',
       category: 'Fotografía'
     },
     {
@@ -32,7 +32,7 @@ const SponsorsSection = () => {
       name: 'MAS',
       handle: '@alimentacionsaludablepanama',
       instagram: 'https://www.instagram.com/alimentacionsaludablepanama',
-      logo: 'https://via.placeholder.com/120x120/228B22/FFFFFF?text=MAS',
+      logo: 'https://res.cloudinary.com/dewe5s4xv/image/upload/v1758948314/alimentacion_rbwqmi.png',
       category: 'Salud & Bienestar'
     },
     {
@@ -40,7 +40,7 @@ const SponsorsSection = () => {
       name: 'Itzenith Quintero',
       handle: '@itzenithquintero',
       instagram: 'https://www.instagram.com/itzenithquintero',
-      logo: 'https://via.placeholder.com/120x120/FF69B4/FFFFFF?text=IQ',
+      logo: 'https://res.cloudinary.com/dewe5s4xv/image/upload/v1758948313/itzeneth_lkpaz5.png',
       category: 'Belleza & Estilo'
     }
   ]
